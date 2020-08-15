@@ -41,7 +41,8 @@ class Main : Script(), ItemTableListener {
     }
 
 
-    private fun inventoryHasUnneededItems() = !cleanedInventory && Inventory.containsAnyExcept(KNIFE, CHOCOLATE_BAR, CHOCOLATE_DUST)
+    private fun inventoryHasUnneededItems() =
+        !cleanedInventory && Inventory.containsAnyExcept(KNIFE, CHOCOLATE_BAR, CHOCOLATE_DUST)
 
     private fun depositUnneededItems() {
         if (Bank.isOpen()) {
