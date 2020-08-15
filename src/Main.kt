@@ -15,7 +15,7 @@ const val CHOCOLATE_BAR = 1973
 const val CHOCOLATE_DUST = 1975
 const val KNIFE: Int = 946
 
-@ScriptMeta(developer = "rkr35", name = "Script Playground", desc = "Experiment with RSPeer's script API.")
+@ScriptMeta(developer = "rkr35", name = "ChocoDusty", desc = "Script to convert chocolate bars into chocolate dust.")
 class Main : Script(), ItemTableListener {
     private var cleanedInventory = false
     private var knife: Item? = null
