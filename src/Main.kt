@@ -116,7 +116,6 @@ class Main : Script(), ItemTableListener {
 
     override fun notify(e: ItemTableEvent?) {
         if (e?.tableKey == ItemTables.INVENTORY) {
-
             when (Triple(e.changeType, e.oldId, e.id)) {
                 Triple(ITEM_REMOVED, CHOCOLATE_DUST, -1) -> dusts -= 1
 
