@@ -36,11 +36,11 @@ class Main : Script(), ItemTableListener {
     }
 
     private fun hasKnife(): Boolean {
-        if (knife == null) {
+        return if (knife == null) {
             knife = Inventory.getFirst(KNIFE)
-            return knife != null
+            knife != null
         } else {
-            return true
+            true
         }
     }
 
