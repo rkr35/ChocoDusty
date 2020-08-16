@@ -21,8 +21,6 @@ class Main : Script(), ItemTableListener {
     private var bars: Int = 0
     private var dusts: Int = 0
 
-    var stopwatch: StopWatch? = null
-
     override fun loop(): Int {
         when {
             hasKnife() -> when {
@@ -77,8 +75,6 @@ class Main : Script(), ItemTableListener {
     private fun depositDust() {
         if (Bank.isOpen()) {
             Bank.depositAll(CHOCOLATE_DUST)
-            Log.info(stopwatch?.elapsed ?: "first stopwatch time ignored")
-            stopwatch = StopWatch.start()
         } else {
             Bank.open()
         }
