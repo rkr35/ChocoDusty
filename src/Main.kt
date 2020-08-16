@@ -17,7 +17,6 @@ const val KNIFE: Int = 946
 
 @ScriptMeta(developer = "rkr35", name = "ChocoDusty", desc = "Script to convert chocolate bars into chocolate dust.")
 class Main : Script(), ItemTableListener {
-    private var cleanedInventory = false
     private var knife: Item? = null
     private var bars: Int = 0
     private var dusts: Int = 0
@@ -26,8 +25,6 @@ class Main : Script(), ItemTableListener {
 
     override fun loop(): Int {
         when {
-            inventoryHasUnneededItems() -> depositUnneededItems()
-
             hasKnife() -> when {
                 hasBars() -> makeDust()
                 hasDust() -> depositDust()
@@ -38,19 +35,6 @@ class Main : Script(), ItemTableListener {
         }
 
         return 50
-    }
-
-
-    private fun inventoryHasUnneededItems() =
-        !cleanedInventory && Inventory.containsAnyExcept(KNIFE, CHOCOLATE_BAR, CHOCOLATE_DUST)
-
-    private fun depositUnneededItems() {
-        if (Bank.isOpen()) {
-            Bank.depositAllExcept(KNIFE, CHOCOLATE_BAR, CHOCOLATE_DUST)
-            cleanedInventory = true
-        } else {
-            Bank.open()
-        }
     }
 
     private fun hasKnife(): Boolean {
