@@ -1,5 +1,4 @@
 import org.rspeer.runetek.adapter.component.Item
-import org.rspeer.runetek.api.commons.StopWatch
 import org.rspeer.runetek.api.component.Bank
 import org.rspeer.runetek.api.component.ItemTables
 import org.rspeer.runetek.api.component.tab.Inventory
