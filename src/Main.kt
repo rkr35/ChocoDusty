@@ -16,6 +16,7 @@ const val KNIFE: Int = 946
 
 @ScriptMeta(developer = "rkr35", name = "ChocoDusty", desc = "Script to convert chocolate bars into chocolate dust.")
 class Main : Script(), ItemTableListener {
+    private var consecutiveEmptyBars: Int = 0
     private var knife: Item? = null
     private var bars: Int = 0
     private var dusts: Int = 0
@@ -61,8 +62,13 @@ class Main : Script(), ItemTableListener {
         if (Bank.isOpen()) {
             if (Bank.contains(CHOCOLATE_BAR)) {
                 Bank.withdrawAll(CHOCOLATE_BAR)
+                consecutiveEmptyBars = 0
             } else {
-                fatal("getBars()", "There are no Chocolate bars ($CHOCOLATE_BAR) in the bank.")
+                consecutiveEmptyBars += 1
+
+                if (consecutiveEmptyBars >= 20) {
+                    fatal("getBars()", "There are no Chocolate bars ($CHOCOLATE_BAR) in the bank.")
+                }
             }
         } else {
             Bank.open()
